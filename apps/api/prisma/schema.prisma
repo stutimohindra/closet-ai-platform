@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ClosetItem {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  category           String?
+  color              String?
+  size               String?
+  brand              String?
+  imageUrl           String?
+  occasion           String?
+  season             String?
+  styleTags          String[]
+  pattern            String?
+  material           String?
+  fit                String?
+  aiDescription      String?
+  analysisConfidence Float?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model RecommendationFeedback {
+  id        Int      @id @default(autoincrement())
+  outfitId  String
+  signal    String
+  notes     String?
+  itemIds   Int[]
+  createdAt DateTime @default(now())
+}
